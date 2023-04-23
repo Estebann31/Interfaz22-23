@@ -108,6 +108,21 @@ public class MainFrame extends JFrame{
                 print.setText(barco1.MostrarDatos(id));
             }
         });
+        procedenciaPorPaísButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                campoPrioridad.setVisible(false);
+                campoPeso.setVisible(false);
+                campoErecibe.setVisible(false);
+                campoEenvia.setVisible(false);
+                campoID.setVisible(false);
+                campoDesc.setVisible(false);
+                checkaduanas.setVisible(false);
+                campoPais.setVisible(true);
+                String pais = campoPais.getText();
+                print.setText(String.valueOf(barco1.contenedoresPais(pais)));
+            }
+        });
     }
 
     public static void main(String[] args) {
