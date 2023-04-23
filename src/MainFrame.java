@@ -91,6 +91,23 @@ public class MainFrame extends JFrame{
                 barco1.desapila(columna);
             }
         });
+
+        mostrarDatosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                campoPrioridad.setVisible(false);
+                campoPeso.setVisible(false);
+                campoErecibe.setVisible(false);
+                campoEenvia.setVisible(false);
+                campoPais.setVisible(false);
+                campoDesc.setVisible(false);
+                checkaduanas.setVisible(false);
+
+                int id = Integer.parseInt(campoID.getText());
+                print.setText(barco1.MostrarDatos(id));
+            }
+        });
     }
 
     public static void main(String[] args) {

@@ -17,5 +17,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="trabajoContenedores" level="project" />
+    <orderEntry type="library" name="trabajoContenedores_jar" level="project" />
   </component>
 </module>
