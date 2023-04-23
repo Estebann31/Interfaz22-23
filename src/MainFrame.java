@@ -18,10 +18,22 @@ public class MainFrame extends JFrame{
     private JTextField campoPais;
     private JTextField campoErecibe;
     private JCheckBox checkaduanas;
+    private JLabel textoid;
+    private JLabel textopeso;
+    private JLabel textopais;
+    private JLabel textoprioridad;
+    private JLabel textodescripicion;
+    private JLabel textoempresaenv;
+    private JLabel textoempresarec;
+    private JLabel textocolumna;
+    private JTextField campocolumna;
+    private JButton botonok;
+    private JTextArea printder;
 
 
     public MainFrame ()
     {
+        final int[] confirmar_boton = new int[1];
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Ejemplo de ventana");
         this.setSize(700, 500);
@@ -30,47 +42,53 @@ public class MainFrame extends JFrame{
         Barco barco1 = new Barco();
 
 
-        mostrarDatosButton.setVisible(true);
         campoID.setVisible(false);
+        textoid.setVisible(false);
         campoPrioridad.setVisible(false);
+        textoprioridad.setVisible(false);
         campoPeso.setVisible(false);
+        textopeso.setVisible(false);
         campoErecibe.setVisible(false);
+        textoempresarec.setVisible(false);
         campoEenvia.setVisible(false);
+        textoempresaenv.setVisible(false);
         campoPais.setVisible(false);
+        textopais.setVisible(false);
         campoDesc.setVisible(false);
+        textodescripicion.setVisible(false);
         checkaduanas.setVisible(false);
+        campocolumna.setVisible(false);
+        textocolumna.setVisible(false);
+        botonok.setVisible(false);
+        print.setText(barco1.toString());
 
-        mostrarHubButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                print.setText(barco1.toString());
-                mostrarDatosButton.setVisible(true);
-            }
-        });
+
         apilarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 campoID.setVisible(true);
+                textoid.setVisible(true);
                 campoPrioridad.setVisible(true);
+                textoprioridad.setVisible(true);
                 campoPeso.setVisible(true);
+                textopeso.setVisible(true);
                 campoErecibe.setVisible(true);
+                textoempresarec.setVisible(true);
                 campoEenvia.setVisible(true);
+                textoempresaenv.setVisible(true);
                 campoPais.setVisible(true);
+                textopais.setVisible(true);
                 campoDesc.setVisible(true);
+                textodescripicion.setVisible(true);
                 checkaduanas.setVisible(true);
+                campocolumna.setVisible(false);
+                textocolumna.setVisible(false);
 
-                int id= Integer.parseInt(campoID.getText());
-                int peso = Integer.parseInt(campoPeso.getText());
-                String pais = campoPais.getText();
-                String desc = campoDesc.getText();
-                String emp_envia = campoEenvia.getText();
-                String emp_recibe = campoErecibe.getText();
-                int prioridad = Integer.parseInt(campoPrioridad.getText());
-                boolean aduanas = checkaduanas.isBorderPainted();
+                botonok.setVisible(true);
+                printder.setText("");
+                confirmar_boton[0] = 1;
 
-                Contenedor contenedor = new Contenedor(id, peso, pais, aduanas,prioridad, desc, emp_envia, emp_recibe );
-                barco1.apila(contenedor);
             }
         });
 
@@ -78,17 +96,26 @@ public class MainFrame extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                campoID.setVisible(false);
+                textoid.setVisible(false);
                 campoPrioridad.setVisible(false);
+                textoprioridad.setVisible(false);
                 campoPeso.setVisible(false);
+                textopeso.setVisible(false);
                 campoErecibe.setVisible(false);
+                textoempresarec.setVisible(false);
                 campoEenvia.setVisible(false);
+                textoempresaenv.setVisible(false);
                 campoPais.setVisible(false);
+                textopais.setVisible(false);
                 campoDesc.setVisible(false);
+                textodescripicion.setVisible(false);
                 checkaduanas.setVisible(false);
-
-                campoID.setVisible(true);
-                int columna = Integer.parseInt(campoID.getText());
-                barco1.desapila(columna);
+                campocolumna.setVisible(true);
+                textocolumna.setVisible(true);
+                botonok.setVisible(true);
+                printder.setText("");
+                confirmar_boton[0]=2;
             }
         });
 
@@ -96,31 +123,92 @@ public class MainFrame extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                campoID.setVisible(true);
+                textoid.setVisible(true);
                 campoPrioridad.setVisible(false);
+                textoprioridad.setVisible(false);
                 campoPeso.setVisible(false);
+                textopeso.setVisible(false);
                 campoErecibe.setVisible(false);
+                textoempresarec.setVisible(false);
                 campoEenvia.setVisible(false);
+                textoempresaenv.setVisible(false);
                 campoPais.setVisible(false);
+                textopais.setVisible(false);
                 campoDesc.setVisible(false);
+                textodescripicion.setVisible(false);
                 checkaduanas.setVisible(false);
+                campocolumna.setVisible(false);
+                textocolumna.setVisible(false);
+                botonok.setVisible(true);
+                printder.setText("");
+                confirmar_boton[0]=3;
 
-                int id = Integer.parseInt(campoID.getText());
-                print.setText(barco1.MostrarDatos(id));
             }
         });
         procedenciaPorPaísButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                campoPrioridad.setVisible(false);
-                campoPeso.setVisible(false);
-                campoErecibe.setVisible(false);
-                campoEenvia.setVisible(false);
                 campoID.setVisible(false);
-                campoDesc.setVisible(false);
-                checkaduanas.setVisible(false);
+                textoid.setVisible(false);
+                campoPrioridad.setVisible(false);
+                textoprioridad.setVisible(false);
+                campoPeso.setVisible(false);
+                textopeso.setVisible(false);
+                campoErecibe.setVisible(false);
+                textoempresarec.setVisible(false);
+                campoEenvia.setVisible(false);
+                textoempresaenv.setVisible(false);
                 campoPais.setVisible(true);
-                String pais = campoPais.getText();
-                print.setText(String.valueOf(barco1.contenedoresPais(pais)));
+                textopais.setVisible(true);
+                campoDesc.setVisible(false);
+                textodescripicion.setVisible(false);
+                checkaduanas.setVisible(false);
+                campocolumna.setVisible(false);
+                textocolumna.setVisible(false);
+                botonok.setVisible(true);
+                printder.setText("");
+                confirmar_boton[0]=4;
+
+            }
+        });
+
+        botonok.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                switch (confirmar_boton[0]){
+                    case 1:
+                        int id= Integer.parseInt(campoID.getText());
+                        int peso = Integer.parseInt(campoPeso.getText());
+                        String pais = campoPais.getText();
+                        String desc = campoDesc.getText();
+                        String emp_envia = campoEenvia.getText();
+                        String emp_recibe = campoErecibe.getText();
+                        int prioridad = Integer.parseInt(campoPrioridad.getText());
+                        boolean aduanas = checkaduanas.isBorderPainted();
+
+                        Contenedor contenedor = new Contenedor(id, peso, pais, aduanas,prioridad, desc, emp_envia, emp_recibe );
+                        barco1.apila(contenedor);
+                        print.setText(barco1.toString());
+                        break;
+
+                    case 2:
+                        int columna = Integer.parseInt(campocolumna.getText());
+                        printder.setText(barco1.desapila(columna));
+                        print.setText(barco1.toString());
+                        break;
+
+                    case 3:
+                        int id1 = Integer.parseInt(campoID.getText());
+                        barco1.MostrarDatos(id1);
+                        printder.setText(barco1.MostrarDatos(id1));
+                        break;
+                    case 4:
+
+                        String pais2 = campoPais.getText();
+                        printder.setText(String.valueOf(barco1.contenedoresPais(pais2)));
+                        break;
+                }
             }
         });
     }
