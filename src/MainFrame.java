@@ -29,7 +29,17 @@ public class MainFrame extends JFrame{
         this.add(main_panel);
         Barco barco1 = new Barco();
 
-        mostrarDatosButton.setVisible(false);
+
+        mostrarDatosButton.setVisible(true);
+        campoID.setVisible(false);
+        campoPrioridad.setVisible(false);
+        campoPeso.setVisible(false);
+        campoErecibe.setVisible(false);
+        campoEenvia.setVisible(false);
+        campoPais.setVisible(false);
+        campoDesc.setVisible(false);
+        checkaduanas.setVisible(false);
+
         mostrarHubButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -40,6 +50,16 @@ public class MainFrame extends JFrame{
         apilarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                campoID.setVisible(true);
+                campoPrioridad.setVisible(true);
+                campoPeso.setVisible(true);
+                campoErecibe.setVisible(true);
+                campoEenvia.setVisible(true);
+                campoPais.setVisible(true);
+                campoDesc.setVisible(true);
+                checkaduanas.setVisible(true);
+
                 int id= Integer.parseInt(campoID.getText());
                 int peso = Integer.parseInt(campoPeso.getText());
                 String pais = campoPais.getText();
@@ -51,6 +71,24 @@ public class MainFrame extends JFrame{
 
                 Contenedor contenedor = new Contenedor(id, peso, pais, aduanas,prioridad, desc, emp_envia, emp_recibe );
                 barco1.apila(contenedor);
+            }
+        });
+
+        desapilarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                campoPrioridad.setVisible(false);
+                campoPeso.setVisible(false);
+                campoErecibe.setVisible(false);
+                campoEenvia.setVisible(false);
+                campoPais.setVisible(false);
+                campoDesc.setVisible(false);
+                checkaduanas.setVisible(false);
+
+                campoID.setVisible(true);
+                int columna = Integer.parseInt(campoID.getText());
+                barco1.desapila(columna);
             }
         });
     }
