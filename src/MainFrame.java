@@ -29,6 +29,9 @@ public class MainFrame extends JFrame{
     private JTextField campocolumna;
     private JButton botonok;
     private JTextArea printder;
+    private JRadioButton botonPrioridad1;
+    private JRadioButton botonPrioridad3;
+    private JRadioButton botonPrioridad2;
 
 
     public MainFrame ()
@@ -44,8 +47,10 @@ public class MainFrame extends JFrame{
 
         campoID.setVisible(false);
         textoid.setVisible(false);
-        campoPrioridad.setVisible(false);
         textoprioridad.setVisible(false);
+        botonPrioridad1.setVisible(false);
+        botonPrioridad2.setVisible(false);
+        botonPrioridad3.setVisible(false);
         campoPeso.setVisible(false);
         textopeso.setVisible(false);
         campoErecibe.setVisible(false);
@@ -69,8 +74,10 @@ public class MainFrame extends JFrame{
 
                 campoID.setVisible(true);
                 textoid.setVisible(true);
-                campoPrioridad.setVisible(true);
                 textoprioridad.setVisible(true);
+                botonPrioridad1.setVisible(true);
+                botonPrioridad2.setVisible(true);
+                botonPrioridad3.setVisible(true);
                 campoPeso.setVisible(true);
                 textopeso.setVisible(true);
                 campoErecibe.setVisible(true);
@@ -89,6 +96,7 @@ public class MainFrame extends JFrame{
                 printder.setText("");
                 confirmar_boton[0] = 1;
 
+
             }
         });
 
@@ -98,8 +106,10 @@ public class MainFrame extends JFrame{
 
                 campoID.setVisible(false);
                 textoid.setVisible(false);
-                campoPrioridad.setVisible(false);
                 textoprioridad.setVisible(false);
+                botonPrioridad1.setVisible(false);
+                botonPrioridad2.setVisible(false);
+                botonPrioridad3.setVisible(false);
                 campoPeso.setVisible(false);
                 textopeso.setVisible(false);
                 campoErecibe.setVisible(false);
@@ -125,8 +135,10 @@ public class MainFrame extends JFrame{
 
                 campoID.setVisible(true);
                 textoid.setVisible(true);
-                campoPrioridad.setVisible(false);
                 textoprioridad.setVisible(false);
+                botonPrioridad1.setVisible(false);
+                botonPrioridad2.setVisible(false);
+                botonPrioridad3.setVisible(false);
                 campoPeso.setVisible(false);
                 textopeso.setVisible(false);
                 campoErecibe.setVisible(false);
@@ -151,8 +163,10 @@ public class MainFrame extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 campoID.setVisible(false);
                 textoid.setVisible(false);
-                campoPrioridad.setVisible(false);
                 textoprioridad.setVisible(false);
+                botonPrioridad1.setVisible(false);
+                botonPrioridad2.setVisible(false);
+                botonPrioridad3.setVisible(false);
                 campoPeso.setVisible(false);
                 textopeso.setVisible(false);
                 campoErecibe.setVisible(false);
@@ -181,11 +195,21 @@ public class MainFrame extends JFrame{
                         int id= Integer.parseInt(campoID.getText());
                         int peso = Integer.parseInt(campoPeso.getText());
                         String pais = campoPais.getText();
+                        int prioridad = 0;
                         String desc = campoDesc.getText();
                         String emp_envia = campoEenvia.getText();
                         String emp_recibe = campoErecibe.getText();
-                        int prioridad = Integer.parseInt(campoPrioridad.getText());
                         boolean aduanas = checkaduanas.isBorderPainted();
+
+                        if (botonPrioridad1.isSelected()){
+                            prioridad = 1;
+                        }
+                        if (botonPrioridad2.isSelected()){
+                            prioridad = 2;
+                        }
+                        if (botonPrioridad3.isSelected()){
+                            prioridad = 3;
+                        }
 
                         Contenedor contenedor = new Contenedor(id, peso, pais, aduanas,prioridad, desc, emp_envia, emp_recibe );
                         barco1.apila(contenedor);
@@ -208,6 +232,36 @@ public class MainFrame extends JFrame{
                         String pais2 = campoPais.getText();
                         printder.setText(String.valueOf(barco1.contenedoresPais(pais2)));
                         break;
+                }
+            }
+        });
+
+        //botones de prioridad
+        botonPrioridad1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (botonPrioridad1.isSelected()){
+                    botonPrioridad2.setSelected(false);
+                    botonPrioridad3.setSelected(false);
+                }
+            }
+        });
+
+        botonPrioridad2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (botonPrioridad2.isSelected()){
+                    botonPrioridad1.setSelected(false);
+                    botonPrioridad3.setSelected(false);
+                }
+            }
+        });
+        botonPrioridad3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (botonPrioridad3.isSelected()){
+                    botonPrioridad1.setSelected(false);
+                    botonPrioridad2.setSelected(false);
                 }
             }
         });
