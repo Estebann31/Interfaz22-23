@@ -42,7 +42,7 @@ public class MainFrame extends JFrame{
         final int[] confirmar_boton = new int[1];
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Ejemplo de ventana");
-        this.setSize(700, 500);
+        this.setSize(800, 800);
         this.setVisible(true);
         this.add(main_panel);
         Puerto puerto = new Puerto();
