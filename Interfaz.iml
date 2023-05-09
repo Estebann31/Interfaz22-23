@@ -10,13 +10,22 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="file://$MODULE_DIR$/../trabajo-Contenedores/out/artifacts/trabajoContenedores_jar" />
+          <root url="file://$USER_HOME$/trabajo-Contenedores/out/artifacts/trabajoContenedores_jar" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://$MODULE_DIR$/../trabajo-Contenedores/out/artifacts/trabajoContenedores_jar" recursive="false" />
+        <jarDirectory url="file://$USER_HOME$/trabajo-Contenedores/out/artifacts/trabajoContenedores_jar" recursive="false" />
       </library>
     </orderEntry>
     <orderEntry type="library" name="trabajoContenedores  (2)" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/IdeaProjects/trabajoContenedores/out/artifacts/trabajoContenedores_jar2/trabajoContenedores.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

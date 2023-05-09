@@ -11,7 +11,6 @@ public class MainFrame extends JFrame{
     private JTextField campoID;
     private JPanel main_panel;
     private JTextArea print;
-    private JTextField campoPrioridad;
     private JTextField campoEenvia;
     private JTextField campoDesc;
     private JTextField campoPeso;
@@ -32,6 +31,10 @@ public class MainFrame extends JFrame{
     private JRadioButton botonPrioridad1;
     private JRadioButton botonPrioridad3;
     private JRadioButton botonPrioridad2;
+    private JLabel textohub;
+    private JRadioButton hub1;
+    private JRadioButton hub2;
+    private JRadioButton hub3;
 
 
     public MainFrame ()
@@ -42,9 +45,16 @@ public class MainFrame extends JFrame{
         this.setSize(700, 500);
         this.setVisible(true);
         this.add(main_panel);
-        Barco barco1 = new Barco();
+        Puerto puerto = new Puerto();
+        puerto.añadirbarco();
+        puerto.añadirbarco();
+        puerto.añadirbarco();
 
 
+        textohub.setVisible(false);
+        hub1.setVisible(false);
+        hub2.setVisible(false);
+        hub3.setVisible(false);
         campoID.setVisible(false);
         textoid.setVisible(false);
         textoprioridad.setVisible(false);
@@ -65,13 +75,17 @@ public class MainFrame extends JFrame{
         campocolumna.setVisible(false);
         textocolumna.setVisible(false);
         botonok.setVisible(false);
-        print.setText(barco1.toString());
+        print.setText(puerto.toStringPuerto());
 
 
         apilarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                textohub.setVisible(true);
+                hub1.setVisible(true);
+                hub2.setVisible(true);
+                hub3.setVisible(true);
                 campoID.setVisible(true);
                 textoid.setVisible(true);
                 textoprioridad.setVisible(true);
@@ -103,7 +117,10 @@ public class MainFrame extends JFrame{
         desapilarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                textohub.setVisible(true);
+                hub1.setVisible(true);
+                hub2.setVisible(true);
+                hub3.setVisible(true);
                 campoID.setVisible(false);
                 textoid.setVisible(false);
                 textoprioridad.setVisible(false);
@@ -132,7 +149,10 @@ public class MainFrame extends JFrame{
         mostrarDatosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                textohub.setVisible(true);
+                hub1.setVisible(true);
+                hub2.setVisible(true);
+                hub3.setVisible(true);
                 campoID.setVisible(true);
                 textoid.setVisible(true);
                 textoprioridad.setVisible(false);
@@ -161,6 +181,10 @@ public class MainFrame extends JFrame{
         procedenciaPorPaísButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                textohub.setVisible(false);
+                hub1.setVisible(false);
+                hub2.setVisible(false);
+                hub3.setVisible(false);
                 campoID.setVisible(false);
                 textoid.setVisible(false);
                 textoprioridad.setVisible(false);
@@ -190,6 +214,18 @@ public class MainFrame extends JFrame{
         botonok.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                int indice=0;
+                if(hub1.isSelected())
+                {
+                    indice =0;
+                }
+                if(hub2.isSelected())
+                {
+                    indice = 1;
+                }
+                if(hub3.isSelected()) {
+                    indice = 2;
+                }
                 switch (confirmar_boton[0]){
                     case 1:
                         int id= Integer.parseInt(campoID.getText());
@@ -199,7 +235,8 @@ public class MainFrame extends JFrame{
                         String desc = campoDesc.getText();
                         String emp_envia = campoEenvia.getText();
                         String emp_recibe = campoErecibe.getText();
-                        boolean aduanas = checkaduanas.isBorderPainted();
+                        boolean aduanas = checkaduanas.isSelected();
+
 
                         if (botonPrioridad1.isSelected()){
                             prioridad = 1;
@@ -212,25 +249,24 @@ public class MainFrame extends JFrame{
                         }
 
                         Contenedor contenedor = new Contenedor(id, peso, pais, aduanas,prioridad, desc, emp_envia, emp_recibe );
-                        barco1.apila(contenedor);
-                        print.setText(barco1.toString());
+                        puerto.apila(contenedor,indice);
+                        print.setText(puerto.toStringPuerto());
                         break;
 
                     case 2:
                         int columna = Integer.parseInt(campocolumna.getText());
-                        printder.setText(barco1.desapila(columna));
-                        print.setText(barco1.toString());
+                        printder.setText(puerto.desapila(columna,indice));
+                        print.setText(puerto.toStringPuerto());
                         break;
 
                     case 3:
                         int id1 = Integer.parseInt(campoID.getText());
-                        barco1.MostrarDatos(id1);
-                        printder.setText(barco1.MostrarDatos(id1));
+                        printder.setText(puerto.MostrarDatos(id1,indice));
                         break;
                     case 4:
 
                         String pais2 = campoPais.getText();
-                        printder.setText(String.valueOf(barco1.contenedoresPais(pais2)));
+                        printder.setText(String.valueOf(puerto.contenedoresPais(pais2)));
                         break;
                 }
             }
@@ -262,6 +298,36 @@ public class MainFrame extends JFrame{
                 if (botonPrioridad3.isSelected()){
                     botonPrioridad1.setSelected(false);
                     botonPrioridad2.setSelected(false);
+                }
+            }
+        });
+        hub1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(hub1.isSelected())
+                {
+                    hub2.setSelected(false);
+                    hub3.setSelected(false);
+                }
+            }
+        });
+        hub2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(hub2.isSelected())
+                {
+                    hub1.setSelected(false);
+                    hub3.setSelected(false);
+                }
+            }
+        });
+        hub3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(hub3.isSelected())
+                {
+                    hub1.setSelected(false);
+                    hub2.setSelected(false);
                 }
             }
         });
