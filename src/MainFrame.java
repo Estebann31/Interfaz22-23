@@ -10,7 +10,7 @@ public class MainFrame extends JFrame{
     private JButton procedenciaPorPaísButton;
     private JTextField campoID;
     private JPanel main_panel;
-    private JTextArea print;
+    private JTextArea print1;
     private JTextField campoEenvia;
     private JTextField campoDesc;
     private JTextField campoPeso;
@@ -35,6 +35,8 @@ public class MainFrame extends JFrame{
     private JRadioButton hub1;
     private JRadioButton hub2;
     private JRadioButton hub3;
+    private JTextArea print2;
+    private JTextArea print3;
 
 
     public MainFrame ()
@@ -42,7 +44,7 @@ public class MainFrame extends JFrame{
         final int[] confirmar_boton = new int[1];
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("Ejemplo de ventana");
-        this.setSize(800, 800);
+        this.setSize(700, 450);
         this.setVisible(true);
         this.add(main_panel);
         Puerto puerto = new Puerto();
@@ -75,7 +77,9 @@ public class MainFrame extends JFrame{
         campocolumna.setVisible(false);
         textocolumna.setVisible(false);
         botonok.setVisible(false);
-        print.setText(puerto.toStringPuerto());
+        print1.setText(puerto.toStringHub1());
+        print2.setText(puerto.toStringHub2());
+        print3.setText(puerto.toStringHub3());
 
 
         apilarButton.addActionListener(new ActionListener() {
@@ -250,13 +254,17 @@ public class MainFrame extends JFrame{
 
                         Contenedor contenedor = new Contenedor(id, peso, pais, aduanas,prioridad, desc, emp_envia, emp_recibe );
                         puerto.apila(contenedor,indice);
-                        print.setText(puerto.toStringPuerto());
+                        print1.setText(puerto.toStringHub1());
+                        print2.setText(puerto.toStringHub2());
+                        print3.setText(puerto.toStringHub3());
                         break;
 
                     case 2:
                         int columna = Integer.parseInt(campocolumna.getText());
                         printder.setText(puerto.desapila(columna,indice));
-                        print.setText(puerto.toStringPuerto());
+                        print1.setText(puerto.toStringHub1());
+                        print2.setText(puerto.toStringHub2());
+                        print3.setText(puerto.toStringHub3());
                         break;
 
                     case 3:

@@ -17,5 +17,14 @@
         <jarDirectory url="file://$MODULE_DIR$/../trabajogrupoContenedores/out/artifacts/trabajoContenedores_jar4" recursive="false" />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../trabajoContenedores/out/artifacts/trabajoContenedores_jar/trabajoContenedores.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
