@@ -1,3 +1,7 @@
+/**
+ * Esteban Caballero Morcillo
+ */
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,6 +41,8 @@ public class MainFrame extends JFrame{
     private JRadioButton hub3;
     private JTextArea print2;
     private JTextArea print3;
+    private JButton mostrarPorPrioridadButton;
+    private JButton prioridad;
 
 
     public MainFrame ()
@@ -276,6 +282,19 @@ public class MainFrame extends JFrame{
                         String pais2 = campoPais.getText();
                         printder.setText(String.valueOf(puerto.contenedoresPais(pais2)));
                         break;
+                    case 5:
+                        int prioridad2 = 0;
+                        if (botonPrioridad1.isSelected()){
+                            prioridad2 = 1;
+                        }
+                        if (botonPrioridad2.isSelected()){
+                            prioridad2 = 2;
+                        }
+                        if (botonPrioridad3.isSelected()){
+                            prioridad2 = 3;
+                        }
+                        printder.setText(puerto.BasePrioridad(prioridad2));
+                        break;
                 }
             }
         });
@@ -337,6 +356,37 @@ public class MainFrame extends JFrame{
                     hub1.setSelected(false);
                     hub2.setSelected(false);
                 }
+            }
+        });
+        mostrarPorPrioridadButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textohub.setVisible(false);
+                hub1.setVisible(false);
+                hub2.setVisible(false);
+                hub3.setVisible(false);
+                campoID.setVisible(false);
+                textoid.setVisible(false);
+                textoprioridad.setVisible(true);
+                botonPrioridad1.setVisible(true);
+                botonPrioridad2.setVisible(true);
+                botonPrioridad3.setVisible(true);
+                campoPeso.setVisible(false);
+                textopeso.setVisible(false);
+                campoErecibe.setVisible(false);
+                textoempresarec.setVisible(false);
+                campoEenvia.setVisible(false);
+                textoempresaenv.setVisible(false);
+                campoPais.setVisible(false);
+                textopais.setVisible(false);
+                campoDesc.setVisible(false);
+                textodescripicion.setVisible(false);
+                checkaduanas.setVisible(false);
+                campocolumna.setVisible(false);
+                textocolumna.setVisible(false);
+                botonok.setVisible(true);
+                printder.setText("");
+                confirmar_boton[0]=5;
             }
         });
     }
